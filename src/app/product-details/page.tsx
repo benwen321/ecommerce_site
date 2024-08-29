@@ -13,7 +13,7 @@ export default function ProductDetails() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch("/api/product?id=3");
+        const response = await fetch("/api/product?id=5");  //MODIFY THIS LINE BASED OFF THE ID OF THE PRODUCT ENTRY 
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }

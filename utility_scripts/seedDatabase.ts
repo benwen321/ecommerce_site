@@ -6,26 +6,23 @@ async function seedDatabase() {
   const orm = await MikroORM.init(config);
   const em = orm.em.fork();
 
-  // Define the new products you want to add
-  const products = [
-    { name: 'Product Name', description: 'Product description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum, felis ut tempor tempor, tellus eros scelerisque est, quis finibus arcu libero viverra augue. Duis consequat, lacus at ornare faucibus, dolor metus iaculis ipsum, a pellentesque dolor augue vel magna. Donec tristique vel diam eu suscipit. Praesent nec felis risus. Duis consequat, lacus at ornare faucibus, dolor metus iaculis ipsum, a pellentesque dolor augue vel magna. Donec tristique vel diam eu suscipit. Praesent nec felis risus.', price: 189.99, imageUrl: 'https://www.wsj.com/buyside/content-images/1be62ca6-8c77-4965-9f13-b0612c8e3d84?width=472&height=266&pixel_ratio=2&size=hero_472x266' }
-    // Add more products as needed
-  ];
-
   try {
-    // Find the existing product (Laptop) and remove it
-    const laptop = await em.findOne(Product, { name: 'Laptop' });
-    if (laptop) {
-      await em.removeAndFlush(laptop);
-      console.log('Removed existing Laptop product');
-    }
+    // Delete all existing products
+    await em.nativeDelete(Product, {});
+    console.log('All existing products deleted');
 
-    // Add new products
-    for (const productData of products) {
-      const product = em.create(Product, productData);
-      await em.persistAndFlush(product);
-      console.log(`Added product: ${product.name} with ID: ${product.id}`);
-    }
+    // Define the new product to add
+    const newProduct = {
+      name: 'Product Name',
+      description: 'Product description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed elementum, felis ut tempor tempor, tellus eros scelerisque est, quis finibus arcu libero viverra augue. Duis consequat, lacus at ornare faucibus, dolor metus iaculis ipsum, a pellentesque dolor augue vel magna. Donec tristique vel diam eu suscipit. Praesent nec felis risus. Duis consequat, lacus at ornare faucibus, dolor metus iaculis ipsum, a pellentesque dolor augue vel magna. Donec tristique vel diam eu suscipit. Praesent nec felis risus.',
+      price: 189.99,
+      imageUrl: 'https://www.wsj.com/buyside/content-images/1be62ca6-8c77-4965-9f13-b0612c8e3d84?width=472&height=266&pixel_ratio=2&size=hero_472x266'
+    };
+
+    // Add the new product
+    const product = em.create(Product, newProduct);
+    await em.persistAndFlush(product);
+    console.log(`Added product: ${product.name} with ID: ${product.id}`);
 
     console.log('Database seeded successfully');
   } catch (error) {
