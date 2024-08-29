@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     if (products.length > 0) {
       console.log('Returning products:', products);
     
-      // Log the type of price for each product
+      // log the type of price for each product
       products.forEach((product) => {
         console.log('Product price type:', typeof product.price); // Should log 'number'
       });

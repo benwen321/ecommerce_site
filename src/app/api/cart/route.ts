@@ -11,13 +11,13 @@ export async function POST(request: NextRequest) {
   try {
     const { productId, quantity } = await request.json();
 
-    // Find the product by ID
+    // find the product by ID
     const product = await em.findOne(Product, { id: productId });
     if (!product) {
       return NextResponse.json({ message: 'Product not found' }, { status: 404 });
     }
 
-    // Create a new cart item
+    // create a new cart item
     const cartItem = em.create(Cart, { product, quantity });
     await em.persistAndFlush(cartItem);
 

@@ -5,11 +5,11 @@ import { Cart } from './src/entities/Cart';
 
 export default defineConfig({
   entities: [Product, Cart],
-  dbName: 'wise_cities_db',
-  user: 'root',
-  password: 'Letmegetin3!',
+  dbName: 'YOUR DB_NAME', //CHANGE THIS TO YOUR DATABASE NAME
+  user: 'root', //CHANGE THIS TO YOUR USERNAME
+  password: 'YOUR PASSWORD', //CHANGE THIS TO YOUR PASSWORD
   host: 'localhost',
   port: 3306,
   metadataProvider: TsMorphMetadataProvider,
-  debug: true,  // Set to false in production
+  debug: true,  
 });
