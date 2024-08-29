@@ -41,6 +41,7 @@ git clone https://github.com/benwen321/ecommerce_site
 
 ### Project Structure
 ![alt text](image.png)
+
 This structure follows the app-router structure of next.js. Since all api-handling was done locally, the utility scripts are used for setting up the database schema and seeding the database. The front-end is centered around ecommerce-site\src\app\page.tsx, which is the homepage that initially loads. The components folder holds key objects that the pages use: the header component, which is displayed via the layout.tsx file, is present in all pages. The ProductCard component is used to display the product-information cards. 
 
 ### Future Improvements
