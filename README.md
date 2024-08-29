@@ -7,9 +7,7 @@ This project is a replica of a sample e-commerce website, featuring a home page 
 
 - Home Page with a responsive product grid layout
 - Clicking on the main product image switches to a page with more details about the product
-- Clicking on the "not-amazon" logo returns to the homepage
-- Individual Product Pages with detailed information
-- Similar Products section on Product Pages
+- Clicking on the "not-amazon" logo returns to the homepages
 - Clicking add-to-cart adds a new row to the mysql database
 
 
